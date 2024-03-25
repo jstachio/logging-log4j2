@@ -391,7 +391,6 @@
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
 
@@ -433,7 +432,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
-              <argLine>--add-opens java.base/java.lang=ALL-UNNAMED
+              <argLine>${surefireArgLine}
+                --add-opens java.base/java.lang=ALL-UNNAMED
                 --add-opens java.base/java.net=ALL-UNNAMED
                 --add-opens java.base/java.util=ALL-UNNAMED</argLine>
             </configuration>

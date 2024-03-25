@@ -270,7 +270,7 @@
     <module>log4j-to-slf4j</module>
     <module>log4j-to-jul</module>
     <module>log4j-web</module>
-
+    <module>log4j-jacoco</module>
   </modules>
 
   <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false">

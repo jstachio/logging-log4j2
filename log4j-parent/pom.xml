@@ -1117,6 +1117,16 @@
           <artifactId>maven-taglib-plugin</artifactId>
           <version>${maven-taglib-plugin.version}</version>
         </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.11</version>
+          <configuration>
+            <excludes>
+              <exclude>META-INF/**</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
 
       </plugins>
     </pluginManagement>
@@ -1192,7 +1202,39 @@
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <fileSets>
+            <fileSet>
+              <directory>${project.build.directory}</directory>
+              <includes>
+                <include>*.exec</include>
+              </includes>
+            </fileSet>
+          </fileSets>
+        </configuration>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+            <configuration>
+              <append>true</append>
+              <propertyName>surefireArgLine</propertyName>
+            </configuration>
+          </execution>
+          <execution>
+            <id>report</id>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <phase>test</phase>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
